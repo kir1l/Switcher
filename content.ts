@@ -98,9 +98,9 @@ function changeChar(text: string, input: HTMLInputElement | HTMLTextAreaElement)
       let res = ''
 
       if(isCyrillic(char)) {
-         res = ru2enChars[char.toLowerCase()]
+         res = ru2enChars[char.toLowerCase()] ? ru2enChars[char.toLowerCase()] : char
       } else {
-         res = en2ruChars[char.toLowerCase()]
+         res = en2ruChars[char.toLowerCase()] ? en2ruChars[char.toLowerCase()] : char
       }
 
       if(isUpperCase(char)) {
