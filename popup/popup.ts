@@ -42,7 +42,6 @@ function reset(): void {
 }
 
 function sendMessageToBackground(data: any): void {
-	// @ts-ignore
 	chrome.runtime.sendMessage({
 		//send a message to the background script
 		from: 'popup',
