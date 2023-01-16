@@ -144,7 +144,6 @@ document.addEventListener('focus', (focusEvent: FocusEvent) : void => {
 chrome.runtime.sendMessage({ from: 'content' }) //first, tell the background page that this is the tab that wants to receive the messages.
 chrome.runtime.onMessage.addListener(function (msg) {
 	// get data from popup
-	console.log(`Received message in content from ${msg.from}, data: `, msg)
 	if (msg.from == 'background') {
 		shortcutKeys = msg.data
 		chrome.storage.local.set({ keys: shortcutKeys }) // save data to local storage
