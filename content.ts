@@ -74,7 +74,6 @@ let shortcutKeys: string[] = ['Control', 'q'],
 	flag = false
 
 ;(async function () {
-	// @ts-ignore
 	const response = await chrome.storage.local.get(['keys'])
 	shortcutKeys = response.keys
 })()
@@ -128,7 +127,6 @@ const handleKeyDown =
 		}
 	}
 
-// prettier-ignore
 document.addEventListener('focus', (focusEvent: FocusEvent) : void => {
    const target = focusEvent.target as EventTarget
 
@@ -143,15 +141,12 @@ document.addEventListener('focus', (focusEvent: FocusEvent) : void => {
    }
 }, true)
 
-// @ts-ignores
 chrome.runtime.sendMessage({ from: 'content' }) //first, tell the background page that this is the tab that wants to receive the messages.
-// @ts-ignore
 chrome.runtime.onMessage.addListener(function (msg) {
 	// get data from popup
 	console.log(`Received message in content from ${msg.from}, data: `, msg)
 	if (msg.from == 'background') {
 		shortcutKeys = msg.data
-		// @ts-ignore
 		chrome.storage.local.set({ keys: shortcutKeys }) // save data to local storage
 	}
 })
