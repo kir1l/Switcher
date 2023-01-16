@@ -1,5 +1,4 @@
 var contentTabId: number
-// @ts-ignore
 chrome.runtime.onMessage.addListener(function (msg, sender) {
 	console.log(
 		`Received message in background from ${msg.from}, data: `,
@@ -11,7 +10,6 @@ chrome.runtime.onMessage.addListener(function (msg, sender) {
 	}
 	if (msg.from == 'popup' && contentTabId) {
 		//got message from popup
-		// @ts-ignore
 		chrome.tabs.sendMessage(contentTabId, {
 			//send it to content script
 			from: 'background',
