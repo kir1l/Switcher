@@ -75,7 +75,9 @@ let shortcutKeys: string[] = ['Control', 'q'],
 
 ;(async function () {
 	const response = await chrome.storage.local.get(['keys'])
-	shortcutKeys = response.keys
+	if (response.keys) {
+		shortcutKeys = response.keys;
+	}
 })()
 
 function isCyrillic(str: string): boolean {
